@@ -19,6 +19,10 @@ h3{
     color: #333333;
 }
 
+h2{
+    padding-bottom: 20px;
+}
+
 button{
     margin-left: 45%;
     font-size: 20px;
@@ -31,6 +35,8 @@ margin: 0;
 /* padding: 0; */
 
 }
+
+/************* High Score List **********/
 
 li {
     height: 50px;
@@ -60,4 +66,12 @@ li::after {
   content: " ";
   display: block;
   clear: both;
+}
+/************* High Score Button **********/
+.high {
+    margin-left: 0;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    color: navy;
 }

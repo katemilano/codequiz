@@ -1,7 +1,8 @@
+/////////////Global Variables//////////////
 var buttonBegin = document.querySelector("#begin");
 var h1El = document.getElementById("#h1");
 var h3El = document.getElementById("#h3");
-var highScore = document.getElementById("#high")
+var highScore = document.querySelector("#high")
 var t = 120;
 var quizTimer = document.createElement("p");
 var j = 0;
@@ -19,6 +20,8 @@ var score  = 0;
 var playAgain = document.createElement("button");
 var clear = document.createElement("button");
 var i = 0;
+var war = document.createElement("p");
+var inQuiz = false;
 
 
 ///////////////// Questions////////////////////
@@ -63,9 +66,10 @@ var question5 = {
 };
 
 var questions = [question1, question2, question3, question4, question5];
-var answersC = [ "alerts", "paratheses", "all of the above","quotes","console.log"]
+var answersC = [ "alerts", "parathesis", "all of the above","quotes","console.log"]
 
 function addQuestions() {
+    
     quizTimer.setAttribute("style", "fontSize: 50px; margin: 0; float: right;")
     quizTimer.setAttribute("id", "time");
     document.body.prepend(quizTimer);
@@ -81,8 +85,6 @@ function addQuestions() {
                 clearInterval(sTime);            
             }
         }, 1000);
-
-        i = 0;
 
         h2E1.textContent = String(questions[i].question);
         h2E1.setAttribute("style", "fontSize: 150px; margin-top: 10%; margin-left: 25%; margin-right: 25%; color: black;");
@@ -108,14 +110,23 @@ function addQuestions() {
         buttonEl2.addEventListener("click", newQ2);
         buttonEl3.addEventListener("click", newQ3);
         buttonEl4.addEventListener("click", newQ4);
-    
+
+        inQuiz = true;
+        
         function newQ1(){
             console.log("run");
 
             if (buttonEl1.textContent === answersC[i]){
                 j = 10 + j;
+                war.textContent = "Correct!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
                 fillNewQ();
             } else {
+                war.textContent = "Wrong!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
+                fillNewQ();
                 t = t - 10;
                 fillNewQ();
             }
@@ -125,9 +136,15 @@ function addQuestions() {
 
             if (buttonEl2.textContent === answersC[i]){
                 j = 10 + j;
+                war.textContent = "Correct!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
                 fillNewQ ();
             } else {
                 t = t - 10;
+                war.textContent = "Wrong!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
                 fillNewQ ();
             }
         }
@@ -136,9 +153,15 @@ function addQuestions() {
 
             if (buttonEl3.textContent === answersC[i]){
                 j = 10 + j;
+                war.textContent = "Correct!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
                 fillNewQ ();
             } else {
                 t = t - 10;
+                war.textContent = "Wrong!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
                 fillNewQ ();
             }
         }
@@ -146,9 +169,15 @@ function addQuestions() {
             console.log("run");
             if (buttonEl4.textContent === answersC[i]){
                 j = 10 + j;
+                war.textContent = "Correct!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
                 fillNewQ ();
             } else {
                 t = t - 10;
+                war.textContent = "Wrong!"
+                war.setAttribute("style", "font-style: italic; margin-left: 25%")
+                document.body.appendChild(war);
                 fillNewQ ();
             }
         }
@@ -170,7 +199,7 @@ function addQuestions() {
             console.log(i);
         }
 }
-
+//////When quiz questions end///////////////
 function endQuiz(){
     h2E1.textContent = "All Done!";
     h2E1.setAttribute("style", "font-size: 35px; margin-left: 25%; margin-top: 10%; margin-bottom: 0;");
@@ -178,6 +207,7 @@ function endQuiz(){
     buttonEl2.remove();
     buttonEl3.remove();
     buttonEl4.remove();
+    war.remove();
     
     score =  t + j;  
 
@@ -225,13 +255,62 @@ function highScores(event) {
     render();
 
     playAgain.textContent = "Play Again";
-    playAgain.setAttribute("style", "margin-left: 0%;")
-    h2E1.appendChild(playAgain);
+    playAgain.setAttribute("style", "margin-left: 25%;")
+    document.body.appendChild(playAgain);
 
     clear.textContent = "Clear Scores";
     clear.setAttribute("style", "margin-left: 5%;")
-    h2E1.appendChild(clear);
+    document.body.appendChild(clear);
 }
+
+/////////High Score Page from clicking High Score////////
+function highScorePage(event){
+    h2E1.textContent = "High Scores"
+    h2E1.setAttribute("style", "font-size: 35px; margin-left: 25%; margin-top: 10%; margin-bottom: 0;");
+    document.body.appendChild(h2E1);
+
+    if (inQuiz === true){
+        highScore.remove();
+        quizTimer.remove();
+        buttonEl4.remove();
+        buttonEl2.remove();
+        buttonEl3.remove();
+        buttonEl1.remove();
+        war.remove();
+    } else {
+        highScore.remove();
+        h1.remove(); 
+        h3.remove(); 
+        buttonBegin.remove(); 
+    }
+
+    event.preventDefault();
+   
+    var highscoreText = input.value.trim() + "   " + score;
+
+    if (highscoreText === ""){
+        return;
+    }
+
+    highScoreL.push(highscoreText);
+    input.value = "";
+
+    storedScores();
+
+    ul.innerHTML = "";
+    h2E1.append(ul);
+
+    render();
+
+    playAgain.textContent = "Play Again";
+    playAgain.setAttribute("style", "margin-left: 25%;")
+    document.body.appendChild(playAgain);
+
+    clear.textContent = "Clear Scores";
+    clear.setAttribute("style", "margin-left: 5%;")
+    document.body.appendChild(clear);
+}
+
 
 function render() {
     for (var k = 0; k < highScoreL.length; k++) {
@@ -256,44 +335,36 @@ function storedScores (){
     localStorage.setItem("highScoreL", JSON.stringify(highScoreL));
 }
 
+/////////////Clear button/////////////////
 clear.addEventListener("click", function(event){
     var element = event.target;
         if (element.matches("button") === true){
-            highScoreL = [];
+            highScoreL = [ ];
             ul.remove();
-
             storedScores();
             render();
         }
 })
 
 
-
-
-
 ///////////////// Main Function////////////////////
 
 function startQuiz() {
-    console.log(highScoreL);
-    if (highScoreL.length == 0) {
         h1.remove(); 
         h3.remove(); 
         buttonBegin.remove();
-    }else{
-        ul.remove();
-        playAgain.remove();
-        clear.remove();
-        console.log("fasd");
-    }
-
     addQuestions();
 };
 
 ///////////////// Click////////////////////
 buttonBegin.addEventListener("click", startQuiz);
-// highScore.addEventListener("click, highScore");
+
+highScore.addEventListener("click", highScorePage);
+
 submit.addEventListener("click", highScores);
 
-playAgain.addEventListener("click", startQuiz);
+playAgain.addEventListener("click", function(){
+    location.reload();
+});
 
 
