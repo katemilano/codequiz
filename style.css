@@ -1,0 +1,63 @@
+/********** Background Color ******/
+
+body{
+    background-color: powderblue;
+}
+
+/*******Opening Page ***********/
+h1{
+    margin-top: 10%;
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: 0;
+}
+
+h3{
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    color: #333333;
+}
+
+button{
+    margin-left: 45%;
+    font-size: 20px;
+}
+
+p{
+color: navy;
+font-size: 20px;
+margin: 0;
+/* padding: 0; */
+
+}
+
+li {
+    height: 50px;
+    padding: 2px;
+    padding-left: 50px;
+    border-style: solid;
+    border-width:1px;
+    margin-right: 30%;
+    background-color: rgb(177, 220, 226);
+    color: rgb(37, 37, 37);
+    font-size: 20px;
+    line-height: 1.5;
+    word-spacing: 800%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li:before {
+  content: "\200B";
+  position: absolute;
+}
+
+li::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
