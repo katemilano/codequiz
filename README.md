@@ -7,6 +7,10 @@ This file creates a coding quiz.  The quiz goes through a series of questions an
 https://katemilano.github.io/codequiz/
 
 ## Webpage Image 
+<img src="images/Screen Shot 2020-12-27 at 2.38.00 PM.png" >
+<img src="images/Screen Shot 2020-12-27 at 2.38.13 PM.png" >
+<img src="images/Screen Shot 2020-12-27 at 2.38.25 PM.png" >
+<img src="images/Screen Shot 2020-12-27 at 2.38.37 PM.png" >
 
 
 ## Contributors
