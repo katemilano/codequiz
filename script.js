@@ -4,7 +4,7 @@ var buttonBegin = document.querySelector("#begin");
 var h1El = document.getElementById("#h1");
 var h3El = document.getElementById("#h3");
 ///////// Timer/////////
-var t = 120;
+var t = 75;
 var quizTimer = document.createElement("p");
 
 ///////// Quiz/////////
@@ -83,7 +83,7 @@ function addQuestions() {
     quizTimer.setAttribute("id", "time");
     document.body.prepend(quizTimer);
     //////// Timer/////////
-    t = 120;
+    t = 75;
         var sTime = setInterval(function tCounter(){
             if (t !=0){ 
                 t = t-1;
@@ -138,7 +138,6 @@ function addQuestions() {
                 war.textContent = "Wrong!"
                 war.setAttribute("style", "font-style: italic; margin-left: 25%")
                 document.body.appendChild(war);
-                fillNewQ();
                 t = t - 10;
                 fillNewQ();
             }
