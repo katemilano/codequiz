@@ -1,21 +1,27 @@
-/////////////Global Variables//////////////
+////////////////Global Variables////////////////
+///////// Home Page/////////
 var buttonBegin = document.querySelector("#begin");
 var h1El = document.getElementById("#h1");
 var h3El = document.getElementById("#h3");
-var highScore = document.querySelector("#high")
+///////// Timer/////////
 var t = 120;
 var quizTimer = document.createElement("p");
-var j = 0;
-var input = document.createElement("input");
-var ul = document.createElement("ul");
-var highScoreL = [];
+
+///////// Quiz/////////
 var buttonEl1 = document.createElement("button");
 var buttonEl2 = document.createElement("button");
 var buttonEl3 = document.createElement("button");
 var buttonEl4 = document.createElement("button");
+///////// End Quiz/////////
 var submit = document.createElement("button");
 var nameP = document.createElement("p");
 var h2E1 = document.createElement("h2");
+///////// Score/////////
+var highScore = document.querySelector("#high")
+var j = 0;
+var input = document.createElement("input");
+var ul = document.createElement("ul");
+var highScoreL = [];
 var score  = 0;
 var playAgain = document.createElement("button");
 var clear = document.createElement("button");
@@ -65,14 +71,18 @@ var question5 = {
     Ans4: "console.log",
 };
 
+///////////////// Array of Questions and Answers////////////////////
 var questions = [question1, question2, question3, question4, question5];
-var answersC = [ "alerts", "parathesis", "all of the above","quotes","console.log"]
+var answersC = [ "alerts", "parenthesis", "all of the above","quotes","console.log"]
 
+
+///////////////// Quiz Function////////////////////
 function addQuestions() {
     
     quizTimer.setAttribute("style", "fontSize: 50px; margin: 0; float: right;")
     quizTimer.setAttribute("id", "time");
     document.body.prepend(quizTimer);
+    //////// Timer/////////
     t = 120;
         var sTime = setInterval(function tCounter(){
             if (t !=0){ 
@@ -85,7 +95,8 @@ function addQuestions() {
                 clearInterval(sTime);            
             }
         }, 1000);
-
+    
+        //////// Add Questions/////////
         h2E1.textContent = String(questions[i].question);
         h2E1.setAttribute("style", "fontSize: 150px; margin-top: 10%; margin-left: 25%; margin-right: 25%; color: black;");
         document.body.appendChild(h2E1);
@@ -113,6 +124,7 @@ function addQuestions() {
 
         inQuiz = true;
         
+        //////// New Questions/////////
         function newQ1(){
             console.log("run");
 
@@ -311,6 +323,7 @@ function highScorePage(event){
     document.body.appendChild(clear);
 }
 
+/////////Saving Scores////////
 
 function render() {
     for (var k = 0; k < highScoreL.length; k++) {
@@ -366,5 +379,3 @@ submit.addEventListener("click", highScores);
 playAgain.addEventListener("click", function(){
     location.reload();
 });
-
-
